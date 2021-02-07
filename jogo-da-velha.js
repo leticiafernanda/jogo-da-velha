@@ -1,47 +1,42 @@
-//Fonte de estudos pertencentes a Leticia Fernanda. GitHub: https://github.com/leticiafernanda 
 const casas = document.getElementsByTagName('input');
-const reiniciar = document.getElementById('reiniciar'); 
-const label_jogador = document.getElementById('jogador');
-
-var jogador = '_'; 
-var vencedor = '_'; 
-var finish;
+const b_reiniciar = document.getElementById('reiniciar'); 
+const label_jogador = document.getElementById('jogador'); 
 
 
+var jogador = '_'; var vencedor = '_'; var finish;
 for(var i=0;i<9;i++) {
-	casas[i].addEventListener('click', (event) => {		
+	casas[i].addEventListener('click', (event) => {
 		if( (event.target.value=='_') && (vencedor=='_')) {
 			event.target.value=jogador; 
-			event.target.style.color='#110901';
-			trocarJogador();
-            vencedor = vitoria(); 
-        }
+			event.target.style.color='#110901'; 
+			trocaJogador();
+			vencedor = vitoria(); 
+		}
 	});
 }
-reiniciar.addEventListener('click', (event) => {
+b_reiniciar.addEventListener('click', (event) => {
 	for(var i=0;i<9;i++) {
 		casas[i].value='_'; 
-		casas[i].style.color='#F7FE2E';
-		casas[i].style.backgroundColor='#F7FE2E'; 
+		casas[i].style.color='#cccbca';
+		casas[i].style.backgroundColor='#cccbca'; 
 	}
 	vencedor = '_'; 
-	sortearJogador(); 
+	sorteiaJogador(); 
 });
-
-var sortearJogador = function() {
+var sorteiaJogador = function() {
 	if(Math.floor(Math.random() * 2)==0) {
-		jogador = "O";
+		jogador = "O"; 
 		label_jogador.innerText="O"; 
-        label_jogador.style.color='#ffffff'; 
-    	}else{
+		label_jogador.style.color='#ffffff'; 
+	}else{
 		jogador = "X";
 		label_jogador.innerText="X"; 
-		label_jogador.style.color='#000000'; 
+		label_jogador.style.color='#ffffff'; 
 	}
 }
 
-sortearJogador();
-var trocarJogador = function() {
+sorteiaJogador(); 
+var trocaJogador = function() {
 	if(jogador=='X') {
 		jogador='O';
 		label_jogador.innerText='O';
@@ -50,7 +45,7 @@ var trocarJogador = function() {
 	}else{
 		jogador='X';
 		label_jogador.innerText='X';
-		label_jogador.style.color='#000000';
+		label_jogador.style.color='#ffffff';
 	}
 }
 var vitoria = function() {
@@ -108,6 +103,8 @@ var vitoria = function() {
 		casas[6].style.backgroundColor='#14b95f';
 
 		return casas[2].value;
-	}					
+	}
+	
+								
     return '_';
 }
